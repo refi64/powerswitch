@@ -8,5 +8,31 @@ Description=Automatically switch tuned profiles based on the power state
 [Service]
 ExecStart=powerswitch
 
+DynamicUser=true
+User=powerswitch
+Group=powerswitch
+
+CapabilityBoundingSet=
+MemoryDenyWriteExecute=true
+IPAddressDeny=any
+LockPersonality=true
+PrivateDevices=true
+PrivateNetwork=true
+PrivateUsers=true
+ProtectControlGroups=true
+ProtectHome=true
+ProtectHostname=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+RestrictAddressFamilies=AF_UNIX
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+SystemCallArchitectures=native
+SystemCallErrorNumber=EPERM
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @resources
+UMask=0066
+
 [Install]
 WantedBy=multi-user.target

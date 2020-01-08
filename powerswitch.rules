@@ -1,0 +1,5 @@
+polkit.addRule(function(action, subject) {
+  if (action.id == 'com.redhat.tuned.switch_profile' && subject.user == 'powerswitch') {
+    return polkit.Result.YES;
+  }
+})
